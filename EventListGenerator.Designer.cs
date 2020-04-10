@@ -31,6 +31,7 @@
             this.dgvEventList = new System.Windows.Forms.DataGridView();
             this.txtId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbSortingOrder = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEventList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -39,7 +40,8 @@
             this.dgvEventList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEventList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.txtId,
-            this.txtName});
+            this.txtName,
+            this.cmbSortingOrder});
             this.dgvEventList.Location = new System.Drawing.Point(12, 12);
             this.dgvEventList.Name = "dgvEventList";
             this.dgvEventList.Size = new System.Drawing.Size(406, 272);
@@ -61,6 +63,12 @@
             this.txtName.HeaderText = "EventName";
             this.txtName.Name = "txtName";
             // 
+            // cmbSortingOrder
+            // 
+            this.cmbSortingOrder.DataPropertyName = "SortingOrder";
+            this.cmbSortingOrder.HeaderText = "SortingOrder";
+            this.cmbSortingOrder.Name = "cmbSortingOrder";
+            // 
             // EventListGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -80,5 +88,6 @@
         private System.Windows.Forms.DataGridView dgvEventList;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtId;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtName;
+        private System.Windows.Forms.DataGridViewComboBoxColumn cmbSortingOrder;
     }
 }

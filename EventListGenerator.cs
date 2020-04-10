@@ -13,7 +13,7 @@ namespace EventDataGenerator
 {
     public partial class EventListGenerator : Form
     {
-        public string constr = @"Data Source=AO-DATABASE\SQLEXPRESS;Initial catalog=ATHLETICSONTARIO;Integrated Security=False;uid=sa;Password=ao@12345";
+        public string constr = @"Data Source=VAIO;Initial catalog=AO_TESTDB_V8;Integrated Security=False;uid=sa;Password=12345";
         public EventListGenerator()
         {
             InitializeComponent();
@@ -21,7 +21,9 @@ namespace EventDataGenerator
 
         private void EventListGenerator_Load(object sender, EventArgs e)
         {
+            PopulateComboBox();
             PopulateDataDridView();
+            
         }
         void PopulateDataDridView()
         {
@@ -33,6 +35,22 @@ namespace EventDataGenerator
                 da.Fill(dt);
                 dgvEventList.DataSource = dt;
             }
+        }
+        void PopulateComboBox()
+        {
+            DataTable table = new DataTable();
+           
+            table.Columns.Add("SortingOrder", typeof(string));
+            table.Rows.Add( "Ascending");
+            table.Rows.Add( "Descending");
+            cmbSortingOrder.ValueMember = "SortingOrder";
+            cmbSortingOrder.DisplayMember = "SortingOrder";
+            //DataRow dr = table.NewRow();
+            //dr[0] = "-Select-"; 
+            //table.Rows.InsertAt(dr, 0);
+            cmbSortingOrder.DataSource = table;
+           
+
         }
 
         private void dgvEventList_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -52,6 +70,7 @@ namespace EventDataGenerator
                         else
                             cd.Parameters.AddWithValue("@Id", Convert.ToInt32(dgvRow.Cells["txtId"].Value));
                         cd.Parameters.AddWithValue("@Name", dgvRow.Cells["txtName"].Value == DBNull.Value ? "" : dgvRow.Cells["txtName"].Value.ToString());
+                        cd.Parameters.AddWithValue("@SortingOrder", dgvRow.Cells["cmbSortingOrder"].Value == DBNull.Value ? "" : dgvRow.Cells["cmbSortingOrder"].Value.ToString());
                         cd.ExecuteNonQuery();
                         PopulateDataDridView();
                     }
