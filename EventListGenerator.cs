@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -13,8 +14,8 @@ namespace EventDataGenerator
 {
     public partial class EventListGenerator : Form
     {
-        
-        public string constr = @"Data Source=VAIO;Initial catalog=AO_TESTDB_V8;Integrated Security=False;uid=sa;Password=12345";
+
+        public string constr = ConfigurationManager.ConnectionStrings["AODB"].ConnectionString;
         public EventListGenerator()
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace EventDataGenerator
 
         private void EventListGenerator_Load(object sender, EventArgs e)
         {
+            panel3.BackColor = Color.FromArgb(100, 88, 44, 55);
             PopulateComboBox();
             PopulateDataDridView();
             
@@ -183,6 +185,12 @@ namespace EventDataGenerator
                 this.Top += e.Y - lastPoint.Y;
             }
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            UserGenerator usr = new UserGenerator();
+            usr.ShowDialog();
         }
     }
 

@@ -62,6 +62,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -80,10 +81,25 @@
     <Compile Include="EventListGenerator.Designer.cs">
       <DependentUpon>EventListGenerator.cs</DependentUpon>
     </Compile>
+    <Compile Include="PasswordGeneroator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasswordGeneroator.Designer.cs">
+      <DependentUpon>PasswordGeneroator.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserGenerator.Designer.cs">
+      <DependentUpon>UserGenerator.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="EventListGenerator.resx">
       <DependentUpon>EventListGenerator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordGeneroator.resx">
+      <DependentUpon>PasswordGeneroator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -94,6 +110,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserGenerator.resx">
+      <DependentUpon>UserGenerator.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="EventDataGenerator_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
