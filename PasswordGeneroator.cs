@@ -38,7 +38,7 @@ namespace EventDataGenerator
 
                         cd.CommandType = CommandType.StoredProcedure;
                         cd.Parameters.AddWithValue("@Id", Userid);
-                        cd.Parameters.AddWithValue("@pPassword", lblPassword.Text.ToString());
+                        cd.Parameters.AddWithValue("@pPassword", txtPassword.Text.ToString());
 
                         cd.ExecuteNonQuery();
 

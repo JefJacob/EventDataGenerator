@@ -25,10 +25,11 @@ namespace EventDataGenerator
         {
             panel3.BackColor = Color.FromArgb(100, 88, 44, 55);
             PopulateComboBox();
-            PopulateDataDridView();
+            PopulateComboBoxMarkUnit();
+            PopulateDataGridView();
             
         }
-        void PopulateDataDridView()
+        void PopulateDataGridView()
         {
             using (SqlConnection conn = new SqlConnection(constr))
             {
@@ -55,6 +56,22 @@ namespace EventDataGenerator
            
 
         }
+        void PopulateComboBoxMarkUnit()
+        {
+            DataTable table = new DataTable();
+
+            table.Columns.Add("MarkUnit", typeof(string));
+            table.Rows.Add("Distance");
+            table.Rows.Add("Time");
+            cmbMarkUnit.ValueMember = "MarkUnit";
+            cmbMarkUnit.DisplayMember = "MarkUnit";
+            //DataRow dr = table.NewRow();
+            //dr[0] = "-Select-"; 
+            //table.Rows.InsertAt(dr, 0);
+            cmbMarkUnit.DataSource = table;
+
+
+        }
 
         private void dgvEventList_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -69,20 +86,21 @@ namespace EventDataGenerator
                         SqlCommand cd = new SqlCommand("EventListAddUpdate", conn);
                         cd.CommandType = CommandType.StoredProcedure;
                         if (dgvRow.Cells["txtId"].Value == DBNull.Value)
-                            cd.Parameters.AddWithValue("@Id", 0);
-                        else
-                            cd.Parameters.AddWithValue("@Id", Convert.ToInt32(dgvRow.Cells["txtId"].Value));
+                            throw new Exception(" Id Cannot be Empty");
+                        
+                        cd.Parameters.AddWithValue("@Id", Convert.ToInt32(dgvRow.Cells["txtId"].Value));
                         cd.Parameters.AddWithValue("@Name", dgvRow.Cells["txtName"].Value == DBNull.Value ? "" : dgvRow.Cells["txtName"].Value.ToString());
                         cd.Parameters.AddWithValue("@SortingOrder", dgvRow.Cells["cmbSortingOrder"].Value == DBNull.Value ? "" : dgvRow.Cells["cmbSortingOrder"].Value.ToString());
+                        cd.Parameters.AddWithValue("@MarkUnit", dgvRow.Cells["cmbMarkUnit"].Value == DBNull.Value ? "" : dgvRow.Cells["cmbMarkUnit"].Value.ToString());
                         cd.ExecuteNonQuery();
-                        PopulateDataDridView();
+                        //PopulateDataGridView();
                     }
                     catch (Exception ex)
                     {
                         if (ex.Message.Contains("UNIQUE"))
                         {
                             MessageBox.Show("Duplicate Entry", "Alert");
-                            PopulateDataDridView();
+                            //PopulateDataGridView();
                         }
                         else
                             MessageBox.Show(ex.Message);
@@ -93,8 +111,8 @@ namespace EventDataGenerator
 
         private void dgvEventList_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            //e.Control.KeyPress -= AllowNumbersOnly;
-            //if (dgvEventList.CurrentCell.ColumnIndex == 2)
+            ////e.Control.KeyPress -= AllowNumbersOnly;
+            //if (dgvEventList.CurrentCell.ColumnIndex == 1)
             //{
             //    e.Control.KeyPress -= AllowNumbersOnly;
             //    e.Control.KeyPress += AllowNumbersOnly;
@@ -190,6 +208,12 @@ namespace EventDataGenerator
         private void button3_Click(object sender, EventArgs e)
         {
             UserGenerator usr = new UserGenerator();
+            usr.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            EventListFromDB usr = new EventListFromDB();
             usr.ShowDialog();
         }
     }
