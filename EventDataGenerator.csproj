@@ -13,7 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>J:\Courses\Capstone\EventData_v1\DeployV1_4\</PublishUrl>
+    <PublishUrl>J:\Courses\Capstone\EventData_v1\Releasev1_5\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -87,6 +87,12 @@
     <Compile Include="EventListGenerator.Designer.cs">
       <DependentUpon>EventListGenerator.cs</DependentUpon>
     </Compile>
+    <Compile Include="EventsWithIssue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EventsWithIssue.Designer.cs">
+      <DependentUpon>EventsWithIssue.cs</DependentUpon>
+    </Compile>
     <Compile Include="PasswordGeneroator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EventListGenerator.resx">
       <DependentUpon>EventListGenerator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventsWithIssue.resx">
+      <DependentUpon>EventsWithIssue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PasswordGeneroator.resx">
       <DependentUpon>PasswordGeneroator.cs</DependentUpon>

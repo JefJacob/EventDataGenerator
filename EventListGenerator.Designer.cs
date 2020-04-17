@@ -40,6 +40,7 @@
             this.txtName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbSortingOrder = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.cmbMarkUnit = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEventList)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -84,6 +85,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel3.Controls.Add(this.button5);
             this.panel3.Controls.Add(this.button4);
             this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.button2);
@@ -185,6 +187,22 @@
             this.cmbMarkUnit.Name = "cmbMarkUnit";
             this.cmbMarkUnit.Width = 64;
             // 
+            // button5
+            // 
+            this.button5.AutoEllipsis = true;
+            this.button5.BackColor = System.Drawing.Color.ForestGreen;
+            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
+            this.button5.ForeColor = System.Drawing.Color.Black;
+            this.button5.Location = new System.Drawing.Point(0, 256);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(152, 40);
+            this.button5.TabIndex = 4;
+            this.button5.Text = "Event Names with Issue";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // EventListGenerator
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -222,5 +240,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn txtName;
         private System.Windows.Forms.DataGridViewComboBoxColumn cmbSortingOrder;
         private System.Windows.Forms.DataGridViewComboBoxColumn cmbMarkUnit;
+        private System.Windows.Forms.Button button5;
     }
 }

@@ -214,7 +214,13 @@ namespace EventDataGenerator
         private void button4_Click(object sender, EventArgs e)
         {
             EventListFromDB usr = new EventListFromDB();
-            usr.ShowDialog();
+            usr.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            EventsWithIssue usr = new EventsWithIssue();
+            usr.Show();
         }
     }
 
